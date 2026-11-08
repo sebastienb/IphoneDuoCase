@@ -70,8 +70,8 @@ looks like the other rounded edges. Points (x inward from spine exterior, z from
 | Rear camera 2 (ultra wide) center | (32.98, -15.25), Ø16.20 |
 | Flash center | (≈49.58, -19.70), Ø3.75 |
 | Rear mic | (49.58, -10.95), slot 3.32 × 1.50 |
-| Inner stadium (lenses+flash+mic, raised to glass level) | x 4.94 → ≈63.5, y -4.70 → -25.80 (R≈10.55 ends) |
-| Outer plateau (3.64 high) | x ≈ 2.0 → ≈72.4, y ≈ -1.23 → -34.62 (rounded ends; arc centers marked at x 60.56 and 69.37 on y = -15.25). **Reaches to within ~1.2 mm of the top edge** so the top wall of a case must be notched/raised over x ≈ 2–72. |
+| Plateau TOP face (flat, 3.64 high) | stadium x 4.94 → 60.56, y -4.70 → -25.80 (55.6 × 21.1, R10.55 ends). The lens glass stands on it (5.72). |
+| Blend to the back glass | On the two sides facing the phone centre the top face runs out through an S-shaped slope ~8.8 wide: toe at x 69.37 and y -34.62 (the crosses at x 60.56 / 69.37 on y -15.25 mark the end of the flat top and the toe). Side view: the slope reaches 1.8 above the glass ~4.4 from the top edge, max slope ~30°. On the sides facing the top edge and the free edge it is a short concave cove (3.5 and ~2.9 wide) down to the edge roll, with the plateau face starting 1.23 from the top edge. **A case opening drawn at the toe (70 × 33) is far too big; design to the top face + blend.** |
 | Keep-out cones | camera 1: 123°, camera 2: 84°, flash inner 121° / outer 155° (Sheet 3). With a 2 mm back and lens at 5.72 the cones are only an issue if the lip is taller than the lens; keep the camera-opening wall ≤ 45° chamfer outward. |
 | Apple logo | 20.00 wide box at x 41.40 (center), y 59.62..79.62 |
 
@@ -134,8 +134,9 @@ halves at ~90°. Most Fold-style cases leave the spine bare, which Apple's own c
 * Shell per half: inner cavity 84.10 × 117.80 × 5.48 (+clearance), two cavities stacked with a 0.34 gap.
 * Clearance for PLA (Bambu P1S, 0.4 nozzle, 0.2 layer): 0.15–0.20 per side on walls, 0.25 at the camera opening
   and button cut-outs. The thin-case keep-outs (28.26 long Camera Control etc.) are what a 1.6–2.0 mm wall needs.
-* Back wall ≤ 2.0 over the MagSafe circle; the camera plateau will stand 3.64 − 2.0 = 1.64 proud of a 2.0 mm back
-  unless the back is locally raised ≥ 5.9 around the opening (lens protection).
+* Back wall ≤ 2.0 over the MagSafe circle; the camera plateau will stand 3.64 − 2.0 = 1.64 proud of a 2.0 mm back.
+  A face-down print cannot raise the back around the plateau, so a collar must be a separate part; its outer
+  edge must stay ≥ ~0.5 clear of the Ø56 MagSafe puck (puck top edge at y ≈ 33.3 from the top).
 * Lip over the display face ≤ 3.06 (≤ 5.23 on the hinge side).
 
 ## Secondary sources

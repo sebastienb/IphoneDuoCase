@@ -20,37 +20,57 @@ Outputs: `shellA_camera_half.stl`, `shellB_display_half.stl` (print-ready, bed s
 three fit coupons, `duo_case.blend` (assembled with a phone dummy), renders and cross-sections.
 Every dimension lives in the `P` (case) and `F` (phone features) dicts at the top of the script.
 
-## Design (v1)
+## Design (v2)
 
 * **Shell A, camera half** — full back panel 1.8 mm (Apple allows 2.1 max over MagSafe), 1.6 mm walls on
-  the top, bottom and free edges, open on the hinge side. The camera plateau opening hugs Apple's plateau
-  outline with 0.3 mm clearance, so the plateau keys the shell in x/y. Notches: Touch ID side button (must stay
-  uncovered), Camera Control (thin-case keep-out, 28.3 mm), both volume buttons as one top slot, two bottom
-  mic/speaker groups. Four 0.3 mm pockets in the floor for reusable nano-tape pads. ~19 g.
+  the top, bottom and free edges, open on the hinge side. The camera opening hugs the plateau's *flat top*
+  where the plateau is 1.8 mm high (65.5 × 31 mm at the surface) and the floor is ramped on the inside to follow
+  Apple's sloped blend out to its toe, so it prints face-down with no overhang. Rounded notches: Touch ID side
+  button (R3.1, must stay uncovered), Camera Control (thin-case keep-out, Ø4.9 ends), both volume buttons as one
+  slot, two bottom mic/speaker notches (R2). 0.6 mm recess for a stick-on MagSafe magnet ring. Eight 0.25 mm
+  grip ribs inside the walls. Four 0.3 mm pockets in the floor for reusable nano-tape pads. ~19 g.
+* **Camera collar** (`camera_ring.stl`, ~2 g) — separate part glued onto shell A. Its underside follows the
+  plateau blend at 0.3 mm clearance, its top sits 0.6 mm above the plateau's flat face, 0.3 mm from its edge,
+  and it runs out flush with the shell at the top and free edges. Outer edge 7 mm from the plateau top so a
+  MagSafe puck still sits flat. Print it in a contrast colour if you like.
 * **Shell B, display half** — 2.4 mm bezel over the outer display (Apple's limit 3.06), 1.0 mm proud of
-  the glass with a 45° inner chamfer for edge gestures, same walls, USB-C notch (Apple's 12.45 × 6.6 keep-out),
-  receiver/mic slot at the top. Two tape pockets under the bezel on the free edge. ~4 g. Every commercial
-  Duo case, Apple's included, tapes this piece; the research report recommends PETG for it if you want clips.
+  the glass with a 45° inner chamfer for edge gestures, same walls and grip ribs, USB-C notch (Apple's
+  12.45 × 6.6 keep-out), rounded receiver/mic slot at the top. Two tape pockets under the bezel on the free
+  edge. ~4 g.
 * **Hinge** — bare, like Apple's own case. Both shells stop 2.7 mm from the spine with a relief chamfer.
 * The cavity follows the phone's 2.74 mm edge roll with a printable 45° fill (1.05 mm), and the outer
   bed-side edge has a 0.8 mm chamfer so nothing overhangs.
 
+## How it stays on
+
+Nothing on a rigid PLA shell can snap over the Duo: each half's only undercut is the edge roll on its outer
+face, and the inner (folding) faces are flat with a 0.34 mm closed gap. So retention is layered:
+
+1. **MagSafe ring (shell A, strongest).** Stick a standard MagSafe magnet ring (Ø56 OD / Ø46 ID, ≤ 0.6 mm,
+   sold as "MagSafe ring sticker") into the recess. The phone's own magnets then pull the shell on with
+   ~1 kg of force, and chargers still align. Apple's note 7 allows MagSafe magnets on the back.
+2. **Grip ribs (both shells).** 0.25 mm ribs with 0.15 mm wall clearance give 0.1 mm interference on the
+   titanium rails. Too tight: sand the ribs. Too loose: raise `grip_rib.proud` or lower `clearance`.
+3. **Plateau key.** The collar and opening lock shell A in x/y.
+4. **Tape pockets.** Shell B has no magnets to use, so like every commercial Duo case its frame relies on the
+   ribs plus reusable nano-tape or microsuction pads in the two pockets under the bezel.
+
 ## Print
 
-1. Print `couponA_camera_top.stl` and `couponA_bottom.stl` first. They test the plateau key, the Touch ID
-   notch and the wall fit in 20 minutes. Adjust `clearance` (0.15) and `cut_clr` (0.30) in `P`, regenerate.
-2. Shells face-down on the textured plate, no supports. 0.12–0.16 mm layers, 4 walls, 100 % infill (the parts
-   are nearly all wall anyway), matte PLA. Add 0.2 mm elephant-foot compensation. Fuzzy skin on the rails for grip
-   if you like the dbrand look.
-3. Insert the phone open: hook the camera plateau into shell A first, press the bottom corners in, then seat
+1. Print the coupons first: `couponA_camera_top.stl` (plateau opening + ramp, volume slot, Touch ID notch),
+   `couponA_bottom.stl` / `couponB_bottom.stl` (ports, corner, ribs) and `camera_ring.stl` (drop it on the
+   phone to check the fit). Adjust `clearance`, `cut_clr`, `grip_rib` in `P`, regenerate.
+2. Shells face-down on the textured plate, no supports. Collar flat-top-down (the STL is already oriented).
+   0.12–0.16 mm layers, 4 walls, 100 % infill, matte PLA. Add 0.2 mm elephant-foot compensation.
+3. Glue the collar: put the shell on the phone, drop the collar over the plateau (it self-centres with 0.3 mm
+   clearance), then tack it with a few drops of CA on the flange. Remove the phone and let it cure.
+4. Insert the phone open: hook the camera plateau into shell A first, press the bottom corners in, then seat
    shell B. Check the fold at 0°, 90°, 120°, 180° before taping.
 
 ## Known limitations / v2 ideas
 
-* No camera lip: the plateau stands 1.8 mm proud of the back and the lenses 3.9 mm. A raised camera ring is
-  not printable face-down without supports; a separate snap-in ring is the v2 answer.
-* Retention is plateau key + wall friction + optional tape. Rigid PLA cannot snap over the phone because the
-  inner (folding) faces have no roll to hook.
-* Optional: 0.5 mm MagSafe ring recess at (42.8, 61.3) from the hinge/top if you want to add a magnet ring.
-* The camera plateau outline (x 2.0–72.4, y 1.5–34.6 from the free edge / top) is read from the drawing's
-  plan view at ±0.3 mm; the other numbers are dimensioned by Apple. Verify on a real phone with the coupon.
+* The blend profile of the plateau is modelled as a smoothstep from Apple's side view (not dimensioned);
+  the 0.3 mm margin covers a reasonable error. If the collar rocks, increase `cut_clr`.
+* The collar top is 0.6 mm above the plateau, 1.5 mm below the lens glass: it frames the plateau, it does not
+  protect the lenses. Raise `ring_lip` if you want a taller guard.
+* Rigid PLA cannot snap over the phone; see "How it stays on".
