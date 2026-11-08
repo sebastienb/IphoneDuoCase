@@ -44,7 +44,7 @@ P = dict(
     adhesive_pad=(10.0, 18.0),          # pad pocket size (x, y)
     # retention
     grip_rib=dict(proud=0.25, length=8.0),              # ribs inside the walls; interference = proud - clearance
-    magsafe_ring=dict(od=56.6, id=45.4, depth=0.6),     # recess for a stick-on MagSafe magnet ring (None = off)
+    magsafe_ring=dict(od=55.6, id=44.4, depth=0.7),     # recess for a stick-on MagSafe ring: 55 OD / 45 ID / 0.6 thick + 0.3 radial, 0.1 depth clearance (None = off)
     # camera collar (separate part, glued on)
     camera_ring=True,
     ring_lip=0.6,                       # collar top stands this far above the plateau top face
@@ -335,7 +335,7 @@ def grip_ribs(ob, floor_T, rim, spots):
 
 def magsafe_recess(ob):
     """Annular recess in the outer surface for a stick-on MagSafe magnet ring (the phone's own magnets then
-    hold the shell on). Standard rings are ~56 OD / 46 ID / 0.5 thick."""
+    hold the shell on through the floor, chargers and grips sit on the ring). Sized for a 55 OD / 45 ID / 0.6 ring."""
     m = P['magsafe_ring']
     if not m: return
     ms = F['magsafe']; cx, cy = P['W'] - ms['xf'], yt(ms['yt'])

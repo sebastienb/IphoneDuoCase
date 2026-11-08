@@ -27,7 +27,8 @@ Every dimension lives in the `P` (case) and `F` (phone features) dicts at the to
   where the plateau is 1.8 mm high (65.5 × 31 mm at the surface) and the floor is ramped on the inside to follow
   Apple's sloped blend out to its toe, so it prints face-down with no overhang. Rounded notches: Touch ID side
   button (R3.1, must stay uncovered), Camera Control (thin-case keep-out, Ø4.9 ends), both volume buttons as one
-  slot, two bottom mic/speaker notches (R2). 0.6 mm recess for a stick-on MagSafe magnet ring. Eight 0.25 mm
+  slot, two bottom mic/speaker notches (R2). 0.7 mm deep ring recess on the back face for a stick-on MagSafe
+  ring (sized for 55 OD / 45 ID / 0.6 thick, 0.3 mm radial clearance). Eight 0.25 mm
   grip ribs inside the walls. Four 0.3 mm pockets in the floor for reusable nano-tape pads. ~19 g.
 * **Camera collar** (`camera_ring.stl`, ~2 g) — separate part glued onto shell A. Its underside follows the
   plateau blend at 0.3 mm clearance, its top sits 0.6 mm above the plateau's flat face, 0.3 mm from its edge,
@@ -46,9 +47,11 @@ Every dimension lives in the `P` (case) and `F` (phone features) dicts at the to
 Nothing on a rigid PLA shell can snap over the Duo: each half's only undercut is the edge roll on its outer
 face, and the inner (folding) faces are flat with a 0.34 mm closed gap. So retention is layered:
 
-1. **MagSafe ring (shell A, strongest).** Stick a standard MagSafe magnet ring (Ø56 OD / Ø46 ID, ≤ 0.6 mm,
-   sold as "MagSafe ring sticker") into the recess. The phone's own magnets then pull the shell on with
-   ~1 kg of force, and chargers still align. Apple's note 7 allows MagSafe magnets on the back.
+1. **MagSafe ring (shell A, strongest).** Stick a MagSafe ring sticker (the kind bundled with MagSafe grips,
+   Ø55 OD / Ø45 ID / 0.6 mm) into the recess on the back face; it self-centres and ends up 0.1 mm below
+   the surface. The phone's own magnets pull the ring, and so the shell, on through the 1.1 mm floor, and
+   chargers and grips snap to the ring on the outside. Apple's note 7 allows MagSafe magnets on the back.
+   Other ring sizes: edit `magsafe_ring` in `P` (ring OD + 0.6, ID − 0.6, thickness + 0.1).
 2. **Grip ribs (both shells).** 0.25 mm ribs with 0.15 mm wall clearance give 0.1 mm interference on the
    titanium rails. Too tight: sand the ribs. Too loose: raise `grip_rib.proud` or lower `clearance`.
 3. **Plateau key.** The collar and opening lock shell A in x/y.
