@@ -11,7 +11,7 @@ Frame used for the phone (closed):
     y: 0 at the bottom edge           ->  117.80 at the top edge   (helper yt() converts "from top" values)
 Each shell is built in its own local frame where z = 0 is the shell's OUTER surface (the print bed) and
 +z points toward the phone's inner (folding) face. Both shells therefore come out print-ready, bed-side down.
-The camera collar (camera_ring.stl) is printed on its flat top and glued onto shell A around the plateau.
+The camera collar (shellA_camera_collar.stl) is printed on its flat top and glued onto shell A around the plateau.
 """
 import bpy, bmesh, math, sys, os
 from mathutils import Vector
@@ -43,7 +43,7 @@ P = dict(
     adhesive_recess=0.3,                # depth of pockets for reusable nano-tape / microsuction pads
     adhesive_pad=(10.0, 18.0),          # pad pocket size (x, y)
     # retention
-    grip_rib=dict(proud=0.25, length=8.0),              # ribs inside the walls; interference = proud - clearance
+    grip_rib=dict(proud=0.45, length=8.0),              # ribs inside the walls; interference = proud - clearance (0.3)
     magsafe_ring=dict(od=55.6, id=44.4, depth=0.7),     # recess for a stick-on MagSafe ring: 55 OD / 45 ID / 0.6 thick + 0.3 radial, 0.1 depth clearance (None = off)
     # camera collar (separate part, glued on)
     camera_ring=True,
@@ -62,13 +62,13 @@ F = dict(
     lenses=[(15.25, 15.25), (32.98, 15.25)], lens_d=16.20,                 # (xf, yt)
     side_button=dict(yt=42.87, length=18.67, r=3.10),                      # Touch ID keep-out, must stay open
     camera_control=dict(yt=84.97, length=28.26, r=2.44),                   # thin-case keep-out
-    volume=dict(x0=44.35, x1=68.61, r=2.0),                                # both buttons, one slot (x from hinge)
+    volume=dict(x0=38.91, x1=63.17, r=2.0),                                # both buttons, one slot (x from hinge); Apple's 44.35 / 57.73 are button CENTRES, 10.88 long
     bottom_ports_A=[dict(x0=16.4, x1=25.9), dict(x0=59.5, x1=69.0)],       # mic + 8 ports, mic + 3 speaker ports
     magsafe=dict(xf=41.30, yt=61.31, d=61.50),
     ribs_A=dict(top=[15.0, 33.0], bottom=[10.0, 33.0, 50.0], free=[8.0, 56.0, 95.0]),
     # Shell B (display half)
     usb_c=dict(x=42.70, width=12.45),
-    receiver=dict(x0=44.0, x1=54.5, r=1.5),
+    receiver=dict(x0=36.13, x1=49.27, r=1.5),                              # 13.14 wide slot centred on the half (x 42.70 from hinge)
     ribs_B=dict(top=[15.0, 33.0, 62.0], bottom=[10.0, 25.0, 60.0], free=[8.0, 40.0, 60.0, 95.0]),
 )
 
@@ -396,7 +396,7 @@ def build_shell_B():
     boolean(ob, box('usbc', u['x'] - u['width'] / 2 - c, u['x'] + u['width'] / 2 + c, -P['wall'] - 2, 1.0, -1, rim + 2))
     # receiver / front mic slot in the top wall
     r = F['receiver']
-    rounded_notch(ob, 'receiver', 'top', r['x0'], r['x1'], T + P['port_bridge'], r['r'], rim)
+    rounded_notch(ob, 'receiver', 'top', r['x0'] - c, r['x1'] + c, T + P['port_bridge'], r['r'], rim)
     grip_ribs(ob, T, rim, F['ribs_B'])
     return ob, rim
 
@@ -521,7 +521,7 @@ def main():
         check(R, 'camera_ring')
         # the collar prints on its flat top: flip it so that face is on the bed
         R.scale = (1, 1, -1); bpy.context.view_layer.update()
-        export_stl(R, os.path.join(out, 'camera_ring.stl'))   # exporter applies the transform
+        export_stl(R, os.path.join(out, 'shellA_camera_collar.stl'))   # exporter applies the transform
         R.scale = (1, 1, 1)
 
     # fit coupons: bottom band of each shell (ports + corner + ribs) and the camera band of shell A

@@ -95,9 +95,9 @@ All buttons are on **Half A (camera half)**. Positions along the length are from
 |---|---|---|---|---|
 | Side button w/ Touch ID | right (free) edge | **42.87** | 15.67 long, protrudes 0.45 | 18.67 long × 5.67 wide (= whole half thickness), R3.10 ends, 25° chamfer all around measured from surface; the button must be **uncovered** (Touch ID) |
 | Camera Control | right (free) edge | **84.97** | 17.44 long at surface, protrudes 0.075 (flush) | typical: 25.00 long × 4.90 wide (2×2.45), R1.00; thin-case: 28.26 long measured 0.4 mm from surface, Ø4.88 ends; 25° chamfer, "avoid narrow edges or acute angles to preserve tactile feel" |
-| Volume (−) | top edge | from hinge x 44.35 → 55.23 | 10.88 long, protrudes 0.45 | |
-| Volume (+) | top edge | from hinge x 57.73 → 68.61 | 10.88 long, protrudes 0.45 | |
-| Top ports (receiver, front mic) | top edge, Half B | 13.14 wide slot near x ≈ 67–80 from hinge | 0.25 deep | do not obstruct |
+| Volume (−) | top edge | **centre** x 44.35 from hinge → spans 38.91 → 49.79 | 10.88 long, protrudes 0.45 | Sheet 1 dimensions the button centres, not the ends (v2 slot was 5.4 off because of this) |
+| Volume (+) | top edge | **centre** x 57.73 from hinge → spans 52.29 → 63.17 | 10.88 long, protrudes 0.45 | 2.5 gap between buttons |
+| Top ports (receiver, front mic) | top edge, Half B | 13.14 wide slot centred on the half, x ≈ 36.1 → 49.3 from hinge (measured on Detail A; sits directly under the volume (−) button) | 0.25 deep | do not obstruct |
 | No Action button, no SIM tray, no Camera button on Half B | | | | |
 
 **Bottom edge** (Detail C; x from hinge exterior):

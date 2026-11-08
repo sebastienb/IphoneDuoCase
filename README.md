@@ -16,24 +16,28 @@ build/                           STLs, fit coupons, .blend, renders (regenerate 
 blender --background --python case/duo_case.py -- --out build
 ```
 
-Outputs: `shellA_camera_half.stl`, `shellB_display_half.stl` (print-ready, bed side down),
-three fit coupons, `duo_case.blend` (assembled with a phone dummy), renders and cross-sections.
+Outputs: `shellA_camera_half.stl`, `shellA_camera_collar.stl`, `shellB_display_half.stl` (print-ready,
+bed side down), three fit coupons, `duo_case.blend` (assembled with a phone dummy), renders and cross-sections.
 Every dimension lives in the `P` (case) and `F` (phone features) dicts at the top of the script.
 
 ## Design (v2)
 
-* **Shell A, camera half** — full back panel 1.8 mm (Apple allows 2.1 max over MagSafe), 1.6 mm walls on
-  the top, bottom and free edges, open on the hinge side. The camera opening hugs the plateau's *flat top*
-  where the plateau is 1.8 mm high (65.5 × 31 mm at the surface) and the floor is ramped on the inside to follow
-  Apple's sloped blend out to its toe, so it prints face-down with no overhang. Rounded notches: Touch ID side
+* **Shell A, camera half** — two prints: the shell and a camera collar. Full back panel 1.8 mm (Apple allows
+  2.1 max over MagSafe), 1.6 mm walls on the top, bottom and free edges, open on the hinge side. The camera
+  opening in the shell looks oversized on its own (65.5 × 31 mm at the surface) and that is deliberate: Apple's
+  plateau does not have a vertical side, it slopes out over 8.8 mm, and a 1.8 mm back meets that slope 5 mm from
+  the flat top. The shell floor is ramped on the inside to follow the slope so it prints face-down with no
+  overhang, and the collar below closes the opening to 0.3 mm around the flat top. Rounded notches: Touch ID side
   button (R3.1, must stay uncovered), Camera Control (thin-case keep-out, Ø4.9 ends), both volume buttons as one
-  slot, two bottom mic/speaker notches (R2). 0.7 mm deep ring recess on the back face for a stick-on MagSafe
-  ring (sized for 55 OD / 45 ID / 0.6 thick, 0.3 mm radial clearance). Eight 0.25 mm
-  grip ribs inside the walls. Four 0.3 mm pockets in the floor for reusable nano-tape pads. ~19 g.
-* **Camera collar** (`camera_ring.stl`, ~2 g) — separate part glued onto shell A. Its underside follows the
-  plateau blend at 0.3 mm clearance, its top sits 0.6 mm above the plateau's flat face, 0.3 mm from its edge,
-  and it runs out flush with the shell at the top and free edges. Outer edge 7 mm from the plateau top so a
-  MagSafe puck still sits flat. Print it in a contrast colour if you like.
+  slot (Apple dimensions the button *centres*, 44.35 and 57.73 from the hinge), two bottom mic/speaker notches
+  (R2). 0.7 mm deep ring recess on the back face for a stick-on MagSafe ring (sized for 55 OD / 45 ID / 0.6
+  thick, 0.3 mm radial clearance). Eight 0.45 mm grip ribs inside the walls. Four 0.3 mm pockets in the floor
+  for reusable nano-tape pads. ~19 g.
+* **Camera collar** (`shellA_camera_collar.stl`, ~2 g) — not optional: it is the visible edge of the camera
+  opening. Glued onto shell A. Its underside follows the plateau slope at 0.3 mm clearance, its top sits 0.6 mm
+  above the plateau's flat face, 0.3 mm from its edge, and it runs out flush with the shell at the top and free
+  edges. Outer edge 7 mm from the plateau top so a MagSafe puck still sits flat. Print it in a contrast colour
+  if you like.
 * **Shell B, display half** — 2.4 mm bezel over the outer display (Apple's limit 3.06), 1.0 mm proud of
   the glass with a 45° inner chamfer for edge gestures, same walls and grip ribs, USB-C notch (Apple's
   12.45 × 6.6 keep-out), rounded receiver/mic slot at the top. Two tape pockets under the bezel on the free
@@ -44,25 +48,34 @@ Every dimension lives in the `P` (case) and `F` (phone features) dicts at the to
 
 ## How it stays on
 
-Nothing on a rigid PLA shell can snap over the Duo: each half's only undercut is the edge roll on its outer
-face, and the inner (folding) faces are flat with a 0.34 mm closed gap. So retention is layered:
+Nothing on a rigid PLA shell can snap over the Duo. Each half's only undercut is the edge roll on its outer
+face, the inner (folding) faces are flat, and the two halves close to a 0.34 mm gap, so a lip over the inner
+face would be crushed by the other half. The shell without a ring or tape just sits there, which is what the
+first print showed.
 
-1. **MagSafe ring (shell A, strongest).** Stick a MagSafe ring sticker (the kind bundled with MagSafe grips,
-   Ø55 OD / Ø45 ID / 0.6 mm) into the recess on the back face; it self-centres and ends up 0.1 mm below
-   the surface. The phone's own magnets pull the ring, and so the shell, on through the 1.1 mm floor, and
+The commercial cases confirm it (see `research/case-design-inspiration.md`): Apple, Spigen, Pitaka, Thinborne,
+Benks and dbrand all use adhesive strips plus the phone's magnets; Nomad's back-only case uses magnets plus
+microsuction pads; the only snap-on case (Ridge) is a flexible TPU-bumper unibody. The printed PLA fold cases on
+MakerWorld all end up with tape or a magnet-ring recess. So this design does the same, in layers:
+
+1. **MagSafe ring (shell A, main hold).** Stick a MagSafe ring sticker (the kind bundled with MagSafe grips,
+   Ø55 OD / Ø45 ID / 0.6 mm) into the recess on the back face; it self-centres and ends up 0.1 mm below the
+   surface. The phone's magnet array pulls the ring, and so the shell, on through the 1.1 mm floor, and
    chargers and grips snap to the ring on the outside. Apple's note 7 allows MagSafe magnets on the back.
    Other ring sizes: edit `magsafe_ring` in `P` (ring OD + 0.6, ID − 0.6, thickness + 0.1).
-2. **Grip ribs (both shells).** 0.25 mm ribs with 0.15 mm wall clearance give 0.1 mm interference on the
-   titanium rails. Too tight: sand the ribs. Too loose: raise `grip_rib.proud` or lower `clearance`.
+2. **Grip ribs (both shells).** 0.45 mm ribs with 0.15 mm wall clearance give 0.3 mm interference on the
+   titanium rails, enough for a firm push-on in PLA. Too tight: sand the ribs. Too loose: raise
+   `grip_rib.proud` or lower `clearance`.
 3. **Plateau key.** The collar and opening lock shell A in x/y.
 4. **Tape pockets.** Shell B has no magnets to use, so like every commercial Duo case its frame relies on the
-   ribs plus reusable nano-tape or microsuction pads in the two pockets under the bezel.
+   ribs plus reusable nano-tape or microsuction pads in the two pockets under the bezel. Shell A has four
+   pockets in the floor if you want it tape-mounted as well.
 
 ## Print
 
 1. Print the coupons first: `couponA_camera_top.stl` (plateau opening + ramp, volume slot, Touch ID notch),
-   `couponA_bottom.stl` / `couponB_bottom.stl` (ports, corner, ribs) and `camera_ring.stl` (drop it on the
-   phone to check the fit). Adjust `clearance`, `cut_clr`, `grip_rib` in `P`, regenerate.
+   `couponA_bottom.stl` / `couponB_bottom.stl` (ports, corner, ribs) and `shellA_camera_collar.stl` (drop it
+   on the phone to check the fit). Adjust `clearance`, `cut_clr`, `grip_rib` in `P`, regenerate.
 2. Shells face-down on the textured plate, no supports. Collar flat-top-down (the STL is already oriented).
    0.12–0.16 mm layers, 4 walls, 100 % infill, matte PLA. Add 0.2 mm elephant-foot compensation.
 3. Glue the collar: put the shell on the phone, drop the collar over the plateau (it self-centres with 0.3 mm
